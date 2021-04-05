@@ -47,24 +47,20 @@ export default class CreateRoomPage extends Component {
       }),
     };
     fetch("/api/create-room", requestOptions)
-      .then((response) => {
-        response.json();
-      })
-      .then((data) => console.log(data));
+      .then((response) => response.json())
+      .then((data) => this.props.history.push("/room/" + data.code));
   }
   render() {
     return (
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
-          <Typography component="h4" variant="h4">
-            {" "}
-          </Typography>{" "}
-        </Grid>{" "}
+          <Typography component="h4" variant="h4"></Typography>
+        </Grid>
         <Grid item xs={12} align="center">
           <FormControl component="fieldset">
             <FormHelperText>
-              <div align="center"> Guest Control of Playback state </div>{" "}
-            </FormHelperText>{" "}
+              <div align="center"> Guest Control of Playback state </div>
+            </FormHelperText>
             <RadioGroup
               row
               defaultValue="true"
@@ -78,17 +74,13 @@ export default class CreateRoomPage extends Component {
               />
               <FormControlLable
                 value="false"
-                control={
-                  <Radio
-                    coloe="secondary"
-                    label="No Control"
-                    labelPlacement="bottom"
-                  />
-                }
-              />{" "}
-            </RadioGroup>{" "}
-          </FormControl>{" "}
-        </Grid>{" "}
+                control={<Radio color="secondary" />}
+                label="No Control"
+                labelPlacement="bottom"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Grid>
         <Grid item xs={12} align="center">
           <FormControl>
             <TextField
@@ -102,26 +94,26 @@ export default class CreateRoomPage extends Component {
                   textAlign: "center",
                 },
               }}
-            />{" "}
+            />
             <FormHelperText>
-              <div align="center"> Votes Required To Skip Song </div>{" "}
-            </FormHelperText>{" "}
-          </FormControl>{" "}
-        </Grid>{" "}
+              <div align="center"> Votes Required To Skip Song </div>
+            </FormHelperText>
+          </FormControl>
+        </Grid>
         <Grid item xs={12} align="center">
           <Button
             color="primary"
             variant="contained"
             onClick={this.handleRoomButtonPressed}
           >
-            Create A Room{" "}
-          </Button>{" "}
-        </Grid>{" "}
+            Create A room
+          </Button>
+        </Grid>
         <Grid item xs={12} align="center">
           <Button color="secondary" variant="contained" to="/" component={Link}>
-            Back{" "}
-          </Button>{" "}
-        </Grid>{" "}
+            Back
+          </Button>
+        </Grid>
       </Grid>
     );
   }
