@@ -29,20 +29,20 @@ export default class RoomJoinPage extends Component {
             value={this.state.roomCode}
             helperText={this.state.error}
             variant="outlined"
-            onChange={this._handleTextFieldchange}
+            onChange={this.handleTextFieldchange}
           ></TextField>
         </Grid>
         <Grid item xs={12} alignItems="center">
           <Button
             variant="contained"
-            color="Primary"
+            color="primary"
             onClick={this.roomButtonPressed}
           >
             Enter Room
           </Button>
         </Grid>
         <Grid item xs={12} alignItems="center">
-          <Button variant="contained" color="Second" to="/" component={Link}>
+          <Button variant="contained" color="secondary" to="/" component={Link}>
             Back
           </Button>
         </Grid>
@@ -51,6 +51,7 @@ export default class RoomJoinPage extends Component {
   }
 
   handleTextFieldchange(e) {
+    console.log(e.target.value);
     this.setState({
       roomCode: e.target.value,
     });
