@@ -15,8 +15,8 @@ export default class RoomJoinPage extends Component {
 
   render() {
     return (
-      <Grid container spacing={1} alignItems="center">
-        <Grid item xs={12}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} alignItems="center">
           <Typography variant="h4" component="h4">
             Join a Room
           </Typography>
@@ -29,20 +29,20 @@ export default class RoomJoinPage extends Component {
             value={this.state.roomCode}
             helperText={this.state.error}
             variant="outlined"
-            onChange={this._handleTextFieldchange}
-          ></TextField>
+            onChange={this.handleTextFieldchange}
+          />
         </Grid>
         <Grid item xs={12} alignItems="center">
           <Button
             variant="contained"
-            color="Primary"
+            color="primary"
             onClick={this.roomButtonPressed}
           >
             Enter Room
           </Button>
         </Grid>
         <Grid item xs={12} alignItems="center">
-          <Button variant="contained" color="Second" to="/" component={Link}>
+          <Button variant="contained" color="secondary" to="/" component={Link}>
             Back
           </Button>
         </Grid>
@@ -62,7 +62,7 @@ export default class RoomJoinPage extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code: this.state.roomCode }),
     };
-    fetch("/api/join-room/", requestOptions)
+    fetch("/api/join-room", requestOptions)
       .then((response) => {
         if (response.ok) {
           this.props.history.push(`/room/${this.state.roomCode}`);
